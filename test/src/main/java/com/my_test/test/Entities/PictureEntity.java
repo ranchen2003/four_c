@@ -1,13 +1,12 @@
 package com.my_test.test.Entities;
 
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Data;
 import java.time.Instant;
 
 @Entity
 @Data
 public class PictureEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageId; // 图片ID
@@ -27,21 +26,7 @@ public class PictureEntity {
     @Column(nullable = false)
     private Instant uploadTime; // 上传时间
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private UserEntity user; // 所属用户
-
-    // 构造函数
-    public PictureEntity(UserEntity user, Integer likesCount, String url, String category, String creationIntent, Instant uploadTime) {
-        this.user = user;
-        this.likesCount = likesCount;
-        this.url = url;
-        this.category = category;
-        this.creationIntent = creationIntent;
-        this.uploadTime = uploadTime;
-    }
-
-    public PictureEntity() {
-
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user; // 发布图片的用户
 }

@@ -3,12 +3,10 @@ package com.my_test.test.Entities;
 import lombok.Data;
 import jakarta.persistence.*;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
+
 @Entity
 @Data
 public class UserEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 用户ID
@@ -33,22 +31,4 @@ public class UserEntity {
 
     @Column(name = "registration_time", nullable = false)
     private Instant registrationTime; // 注册时间
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PictureEntity> pictures = new ArrayList<>(); // 用户发布的图片列表
-
-    // 构造函数
-    public UserEntity(String accountName, String nickname, String password, String avatarUrl, Integer likesCount, Integer followersCount, Instant registrationTime) {
-        this.accountName = accountName;
-        this.nickname = nickname;
-        this.password = password;
-        this.avatarUrl = avatarUrl;
-        this.likesCount = likesCount;
-        this.followersCount = followersCount;
-        this.registrationTime = registrationTime;
-    }
-
-    public UserEntity() {
-
-    }
 }
