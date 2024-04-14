@@ -18,6 +18,7 @@ import java.time.Instant;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/pictures")
 public class PictureController {
 

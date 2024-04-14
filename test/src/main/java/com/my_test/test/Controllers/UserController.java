@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UserController {
 
